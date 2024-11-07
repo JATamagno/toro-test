@@ -150,9 +150,18 @@ Autentica um usuário com o e-mail e senha fornecidos.
 
 ---
 
+## Documentação
+
+A documentação da API estará disponível em:
+
+1. Swagger: `http://127.0.0.1:8000/docs`.
+2. Redoc: `http://127.0.0.1:8000/redoc`.
+
+---
+
 ## Instalação
 
-Para rodar a API localmente, siga os passos abaixo:
+Para rodar a API localmente, tenha instalado o Python no mínimo na versão 3.12.4 e siga os passos abaixo:
 
 ### 1. Clone o repositório
 
