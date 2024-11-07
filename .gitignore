@@ -3,9 +3,3 @@ venv
 
 #Ignore pycache
 __pycache__
-
-#Ignore .env
-.env
-
-#Ignore database.db
-database.db
