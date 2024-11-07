@@ -75,3 +75,39 @@ def test_delete_user(client, user):
     response = client.delete('/users/1')
     assert response.status_code == HTTPStatus.OK
     assert response.json() == {'message': 'User deleted'}
+
+
+def test_login_success(client, user):
+    response = client.post(
+        '/login',
+        json={
+            'email': user.email,
+            'password': user.password,
+        },
+    )
+    assert response.status_code == HTTPStatus.OK
+    assert response.json() == {'message': 'Login successful'}
+
+
+def test_login_user_not_found(client):
+    response = client.post(
+        '/login',
+        json={
+            'email': 'nonexistent@example.com',
+            'password': 'somepassword',
+        },
+    )
+    assert response.status_code == HTTPStatus.NOT_FOUND
+    assert response.json() == {'detail': 'User not found'}
+
+
+def test_login_incorrect_password(client, user):
+    response = client.post(
+        '/login',
+        json={
+            'email': user.email,
+            'password': 'wrongpassword',
+        },
+    )
+    assert response.status_code == HTTPStatus.UNAUTHORIZED
+    assert response.json() == {'detail': 'Incorrect password'}

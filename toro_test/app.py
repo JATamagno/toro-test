@@ -2,7 +2,7 @@ from http import HTTPStatus
 from fastapi import FastAPI, HTTPException, Depends
 from sqlalchemy import select
 from sqlalchemy.orm import Session
-from toro_test.schemas import Message, UserSchema, UserPublic, UserDB, UserList
+from toro_test.schemas import Message, UserSchema, UserPublic, LoginRequest, UserList
 from toro_test.models import User
 from toro_test.database import get_session
 from sqlalchemy.exc import IntegrityError
@@ -89,3 +89,23 @@ def delete_user(user_id: int, session: Session = Depends(get_session)):
     session.commit()
 
     return {'message': 'User deleted'}
+
+@app.post('/login', status_code=HTTPStatus.OK)
+def login(request: LoginRequest, session: Session = Depends(get_session)):
+    db_user = session.scalar(
+        select(User).where(User.email == request.email)
+    )
+
+    if not db_user:
+        raise HTTPException(
+            status_code=HTTPStatus.NOT_FOUND,
+            detail="User not found"
+        )
+
+    if db_user.password != request.password:
+        raise HTTPException(
+            status_code=HTTPStatus.UNAUTHORIZED,
+            detail="Incorrect password"
+        )
+
+    return {"message": "Login successful"}
