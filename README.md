@@ -4,7 +4,11 @@
 Esta aplicação possui endpoints que permitem operações CRUD relativas ao desenvolvimento da US TORO-001: 
 Eu, como investidor, gostaria de acessar a plataforma Toro usando minhas credenciais de usuário e senha, para que eu possa aprender mais, investir mais e acompanhar meus investimentos. 
 
-Você pode executar esta aplicação em seu ambiente local.
+Você pode executar esta aplicação em seu ambiente local ou acessar [https://torotakehometest.azurewebsites.net/](https://torotakehometest.azurewebsites.net/).
+
+Para consultar a documentação, acesse uma das opções abaixo:
+1. [https://torotakehometest.azurewebsites.net/docs](https://torotakehometest.azurewebsites.net/docs).
+2. [https://torotakehometest.azurewebsites.net/redoc](https://torotakehometest.azurewebsites.net/redoc).
 
 
 ## Descrição
